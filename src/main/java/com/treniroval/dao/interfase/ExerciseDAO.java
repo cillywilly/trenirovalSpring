@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ExerciseDAO {
 
-    List<Exercise> getExercisesByTraining(Training training);
+    List<Exercise> getExercises(Training training);
 
 }

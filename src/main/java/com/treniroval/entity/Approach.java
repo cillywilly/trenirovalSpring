@@ -13,7 +13,7 @@ public class Approach {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int idTrainingExercise;
+    private int id;
 
     @Column(name = "ID_TRAINING")
     private int idTraining;
@@ -44,7 +44,7 @@ public class Approach {
     @Override
     public String toString() {
         return "TrainingExercise{" +
-                "idTrainingExercise=" + idTrainingExercise +
+                "idTrainingExercise=" + id +
                 ", idTraining=" + idTraining +
                 ", idExercise=" + idExercise +
                 ", approach='" + approachNumber + '\'' +
@@ -54,11 +54,11 @@ public class Approach {
     }
 
     public int getIdTrainingExercise() {
-        return idTrainingExercise;
+        return id;
     }
 
     public void setIdTrainingExercise(int idTrainingExercise) {
-        this.idTrainingExercise = idTrainingExercise;
+        this.id = idTrainingExercise;
     }
 
     public int getIdTraining() {
