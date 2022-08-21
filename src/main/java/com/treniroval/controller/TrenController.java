@@ -19,8 +19,7 @@ public class TrenController {
 
     @GetMapping("/exercises")
     public List<Exercise> getExercisesByTraining() {
-        Training training = new Training("Grudi", "1911-11-11 11:11:11", 1);
-        List<Exercise> exercises = trenService.getExercisesByTraining(training);
-         return exercises;
+        Training training = new Training("Hello trainig", "21.08.2022 19:54:00", 1);
+        return trenService.getExercisesByTraining(training);
     }
 }

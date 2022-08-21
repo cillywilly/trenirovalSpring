@@ -1,21 +1,14 @@
 package com.treniroval.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "USER")
-@NoArgsConstructor
-@Getter
-@Setter
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_USER")
+    @Column(name = "ID")
     private int idUser;
 
     @Column(name = "LOGIN")
@@ -29,6 +22,9 @@ public class User {
         this.password = password;
     }
 
+    public User() {
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -38,4 +34,27 @@ public class User {
                 '}';
     }
 
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

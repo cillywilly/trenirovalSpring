@@ -1,6 +1,6 @@
 package com.treniroval.service;
 
-import com.treniroval.dao.ExerciseDAO;
+import com.treniroval.dao.interfase.ExerciseDAO;
 import com.treniroval.entity.Exercise;
 import com.treniroval.entity.Training;
 import org.springframework.beans.factory.annotation.Autowired;

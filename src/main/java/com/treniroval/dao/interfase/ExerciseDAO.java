@@ -1,4 +1,4 @@
-package com.treniroval.dao;
+package com.treniroval.dao.interfase;
 
 import com.treniroval.entity.Exercise;
 import com.treniroval.entity.Training;

@@ -1,0 +1,43 @@
+DROP TABLE IF EXISTS training;
+
+CREATE TABLE `TRAINING` (
+                                  `ID_TRAINING` INTEGER NOT NULL  AUTO_INCREMENT,
+                                  `TRAINING_TOPIC` VARCHAR(50) NULL  DEFAULT NULL,
+                                  `DATE` VARCHAR(50) NULL DEFAULT NULL,
+                                  `ID_USER` INTEGER NULL DEFAULT NULL,
+                                  PRIMARY KEY (`ID_TRAINING`)
+);
+
+DROP TABLE IF EXISTS exercise;
+
+CREATE TABLE `EXERCISE` (
+                                  `ID_EXERCISE` INTEGER NOT NULL  AUTO_INCREMENT,
+                                  `EXERCISE_NAME` VARCHAR(50) NULL DEFAULT NULL,
+                                  PRIMARY KEY (`ID_EXERCISE`)
+);
+
+DROP TABLE IF EXISTS training_exercise;
+
+CREATE TABLE `TRAINING_EXERCISE` (
+                                           `ID_TRAINING_EXERCISE` INTEGER NOT NULL  AUTO_INCREMENT,
+                                           `ID_TRAINING` INTEGER NULL DEFAULT NULL,
+                                           `ID_EXERCISE` INTEGER NULL DEFAULT NULL,
+                                           `APPROACH` INTEGER NULL DEFAULT NULL,
+                                           `REPEAT` INTEGER NULL DEFAULT NULL,
+                                           `WORKLOAD` INTEGER NULL DEFAULT NULL,
+                                           `EXERCISE_NUMBER` INTEGER NULL DEFAULT NULL,
+                                           PRIMARY KEY (`ID_TRAINING_EXERCISE`)
+);
+
+DROP TABLE IF EXISTS user;
+
+CREATE TABLE `USERS` (
+                             `ID_USER` INTEGER NOT NULL AUTO_INCREMENT,
+                             `LOGIN` VARCHAR(50) NOT NULL,
+                             `PASSWORD` VARCHAR(50) NOT NULL,
+                             PRIMARY KEY (`ID_USER`)
+);
+
+ALTER TABLE training ADD FOREIGN KEY (ID_USER) REFERENCES user (`ID_USER`);
+ALTER TABLE training_exercise ADD FOREIGN KEY (ID_TRAINING) REFERENCES training (`ID_TRAINING`);
+ALTER TABLE training_exercise ADD FOREIGN KEY (ID_EXERCISE) REFERENCES exercise (`ID_EXERCISE`);
