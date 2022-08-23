@@ -3,23 +3,24 @@ package com.treniroval.dao;
 import com.treniroval.dao.interfase.ExerciseDAO;
 import com.treniroval.entity.Exercise;
 import com.treniroval.entity.Training;
+import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 
 @Repository
+@RequiredArgsConstructor
 public class ExerciseDAOImpl implements ExerciseDAO {
 
-    private final EntityManager entityManager;
+    private final JdbcTemplate jdbcTemplate;
 
-    public ExerciseDAOImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+    private static final String GET_ALL_EXERCISES = "SELECT * FROM EXERCISE";
 
     @Override
     public List<Exercise> getExercises(Training training) {
-        return entityManager.createQuery("from Exercise").getResultList();
+        return jdbcTemplate.query(GET_ALL_EXERCISES, BeanPropertyRowMapper.newInstance(Exercise.class));
     }
 }

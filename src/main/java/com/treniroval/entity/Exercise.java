@@ -1,15 +1,21 @@
 package com.treniroval.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "EXERCISE")
 public class Exercise {
 
+    @OneToMany
+    @JoinColumn(name = "EXERCISE_ID")
+    private List<Approach> approaches;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id;
+
     @Column(name = "EXERCISE_NAME")
     private String exerciseName;
 
@@ -28,12 +34,12 @@ public class Exercise {
                 '}';
     }
 
-    public int getIdExercise() {
+    public int getId() {
         return id;
     }
 
-    public void setIdExercise(int idExercise) {
-        this.id = idExercise;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getExerciseName() {

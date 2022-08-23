@@ -1,24 +1,25 @@
 package com.treniroval.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "APPROACH")
+@Getter
+@Setter
 public class Approach {
-
-    @OneToOne
-    @JoinColumn(name = "ID")
-    private Exercise exercise;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id;
 
-    @Column(name = "ID_TRAINING")
+    @Column(name = "TRAINING_ID")
     private int idTraining;
 
-    @Column(name = "ID_EXERCISE")
+    @Column(name = "EXERCISE_ID")
     private int idExercise;
 
     @Column(name = "APPROACH_NUMBER")
@@ -51,54 +52,6 @@ public class Approach {
                 ", repeat='" + repeat + '\'' +
                 ", workload='" + workload + '\'' +
                 '}';
-    }
-
-    public int getIdTrainingExercise() {
-        return id;
-    }
-
-    public void setIdTrainingExercise(int idTrainingExercise) {
-        this.id = idTrainingExercise;
-    }
-
-    public int getIdTraining() {
-        return idTraining;
-    }
-
-    public void setIdTraining(int idTraining) {
-        this.idTraining = idTraining;
-    }
-
-    public int getIdExercise() {
-        return idExercise;
-    }
-
-    public void setIdExercise(int idExercise) {
-        this.idExercise = idExercise;
-    }
-
-    public int getApproach() {
-        return approachNumber;
-    }
-
-    public void setApproach(int approachNumber) {
-        this.approachNumber = approachNumber;
-    }
-
-    public int getRepeat() {
-        return repeat;
-    }
-
-    public void setRepeat(int repeat) {
-        this.repeat = repeat;
-    }
-
-    public int getWorkload() {
-        return workload;
-    }
-
-    public void setWorkload(int workload) {
-        this.workload = workload;
     }
 
 }

@@ -5,5 +5,7 @@ import com.treniroval.entity.User;
 public interface UserDAO {
     User getUser(int id);
 
-    boolean createUser(User user);
+    int createUser(User user);
+
+    User updateUser(User user);
 }

@@ -1,10 +1,20 @@
 package com.treniroval.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "USER")
+@Getter
+@Setter
 public class User {
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_ID")
+    private List<Training> trainings;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,29 +42,5 @@ public class User {
                 ", login=" + login +
                 ", password=" + password +
                 '}';
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int idUser) {
-        this.id = idUser;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

@@ -1,14 +1,19 @@
 package com.treniroval.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "TRAINING")
+@Getter
+@Setter
 public class Training {
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ID_TRAINING")
+    @JoinColumn(name = "TRAINING_ID")
     private List<Approach> approaches;
 
     @Id
@@ -22,7 +27,7 @@ public class Training {
     @Column(name = "DATE")
     private String date;
 
-    @Column(name = "ID_USER")
+    @Column(name = "USER_ID")
     private int idUser;
 
     public Training(String trainingTopic, String date, int idUser) {
@@ -42,38 +47,6 @@ public class Training {
                 ", date='" + date + '\'' +
                 ", idUser=" + idUser +
                 '}';
-    }
-
-    public int getIdTraining() {
-        return id;
-    }
-
-    public void setIdTraining(int idTraining) {
-        this.id = idTraining;
-    }
-
-    public String getTrainingTopic() {
-        return trainingTopic;
-    }
-
-    public void setTrainingTopic(String trainingTopic) {
-        this.trainingTopic = trainingTopic;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
     }
 
 }
