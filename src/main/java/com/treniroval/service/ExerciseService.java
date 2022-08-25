@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ExerciseService {
     List<Exercise> getExercises(Training training);
+
+    void createExercise(Exercise exercise);
 }

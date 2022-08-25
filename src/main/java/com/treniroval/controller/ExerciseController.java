@@ -21,8 +21,13 @@ public class ExerciseController {
 
     @PostMapping("/exercises")
     public List<Exercise> getExercises() {
+        //получить список упражнений по тренировке
         Training training = new Training("Hello trainig", "21.08.2022 19:54:00", 1);
         return exerciseService.getExercises(training);
     }
 
+    @PostMapping("/exercise")
+    public void createExercise() {
+        exerciseService.createExercise(new Exercise("лёж лёжа"));
+    }
 }

@@ -22,4 +22,9 @@ public class ExerciseServiceImpl implements ExerciseService {
     public List<Exercise> getExercises(Training training) {
         return exerciseDAO.getExercises(training);
     }
+
+    @Override
+    public void createExercise(Exercise exercise) {
+        exerciseDAO.createExercise(exercise);
+    }
 }
