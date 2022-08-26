@@ -4,6 +4,7 @@ import com.treniroval.entity.Exercise;
 import com.treniroval.entity.Training;
 import com.treniroval.service.ExerciseService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,14 +21,14 @@ public class ExerciseController {
     }
 
     @PostMapping("/exercises")
-    public List<Exercise> getExercises() {
-        //получить список упражнений по тренировке
-        Training training = new Training("Hello trainig", "21.08.2022 19:54:00", 1);
+    public List<Exercise> getExercises(@RequestBody Training training) {
+//        Training training = new Training("Hello trainig", "21.08.2022 19:54:00", 1);
         return exerciseService.getExercises(training);
     }
 
     @PostMapping("/exercise")
-    public void createExercise() {
-        exerciseService.createExercise(new Exercise("лёж лёжа"));
+    public void createExercise(@RequestBody Exercise exercise) {
+        exerciseService.createExercise(exercise);
     }
+
 }

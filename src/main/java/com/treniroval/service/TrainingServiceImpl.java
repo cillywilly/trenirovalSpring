@@ -23,5 +23,10 @@ public class TrainingServiceImpl implements TrainingService {
         return trainingDAO.getTrains(user);
     }
 
+    @Override
+    public void createTraining(Training training) {
+        trainingDAO.createTraining(training);
+    }
+
 
 }

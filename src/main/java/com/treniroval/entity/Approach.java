@@ -17,10 +17,10 @@ public class Approach {
     private int id;
 
     @Column(name = "TRAINING_ID")
-    private int idTraining;
+    private int trainingId;
 
     @Column(name = "EXERCISE_ID")
-    private int idExercise;
+    private int exerciseId;
 
     @Column(name = "APPROACH_NUMBER")
     private int approachNumber;
@@ -31,9 +31,9 @@ public class Approach {
     @Column(name = "WORKLOAD")
     private int workload;
 
-    public Approach(int idTraining, int idExercise, int approachNumber, int repeat, int workload) {
-        this.idTraining = idTraining;
-        this.idExercise = idExercise;
+    public Approach(int trainingId, int exerciseId, int approachNumber, int repeat, int workload) {
+        this.trainingId = trainingId;
+        this.exerciseId = exerciseId;
         this.approachNumber = approachNumber;
         this.repeat = repeat;
         this.workload = workload;
@@ -46,8 +46,8 @@ public class Approach {
     public String toString() {
         return "TrainingExercise{" +
                 "idTrainingExercise=" + id +
-                ", idTraining=" + idTraining +
-                ", idExercise=" + idExercise +
+                ", idTraining=" + trainingId +
+                ", idExercise=" + exerciseId +
                 ", approach='" + approachNumber + '\'' +
                 ", repeat='" + repeat + '\'' +
                 ", workload='" + workload + '\'' +

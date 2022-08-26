@@ -10,4 +10,5 @@ public interface TrainingService {
 
     List<Training> getTrains(User user);
 
+    void createTraining(Training training);
 }

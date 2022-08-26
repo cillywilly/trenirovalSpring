@@ -3,25 +3,30 @@ package com.treniroval.dao;
 import com.treniroval.dao.interfase.TrainingDAO;
 import com.treniroval.entity.Training;
 import com.treniroval.entity.User;
+import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class TrainingDAOImpl implements TrainingDAO {
 
-    private final EntityManager entityManager;
+    private final JdbcTemplate jdbcTemplate;
 
-    public TrainingDAOImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+    private static final String GET_TRAINING_BY_USER = "from Training where idUser = ?";
+    private static final String CREATE_TRAINING = "INSERT INTO Training (trainingTopic, 'date', userId) values (?, ?, ?)";
 
     @Override
     public List<Training> getTrains(User user) {
-        //todo
-        Query query = entityManager.createQuery("from Training where idUser=1");
-        return query.getResultList();
+        return jdbcTemplate.query(GET_TRAINING_BY_USER, BeanPropertyRowMapper.newInstance(Training.class), user.getId());
+    }
+
+    @Override
+    public void createTraining(Training training) {
+        jdbcTemplate.update(CREATE_TRAINING, training.getTrainingTopic(), training.getDate(), training.getUserId());
+
     }
 }

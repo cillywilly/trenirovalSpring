@@ -28,12 +28,12 @@ public class Training {
     private String date;
 
     @Column(name = "USER_ID")
-    private int idUser;
+    private int userId;
 
-    public Training(String trainingTopic, String date, int idUser) {
+    public Training(String trainingTopic, String date, int userId) {
         this.trainingTopic = trainingTopic;
         this.date = date;
-        this.idUser = idUser;
+        this.userId = userId;
     }
 
     public Training() {
@@ -45,7 +45,7 @@ public class Training {
                 "idTraining=" + id +
                 ", trainingTopic='" + trainingTopic + '\'' +
                 ", date='" + date + '\'' +
-                ", idUser=" + idUser +
+                ", idUser=" + userId +
                 '}';
     }
 

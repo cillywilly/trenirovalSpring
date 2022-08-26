@@ -23,4 +23,9 @@ public class ApproachServiceImpl implements ApproachService {
         return approachDAO.getApproaches(training);
     }
 
+    @Override
+    public void createApproach(Approach approach) {
+        approachDAO.createApproach(approach);
+    }
+
 }

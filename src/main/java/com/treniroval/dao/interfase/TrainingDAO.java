@@ -6,5 +6,8 @@ import com.treniroval.entity.User;
 import java.util.List;
 
 public interface TrainingDAO {
+
     List<Training> getTrains(User user);
+
+    void createTraining(Training training);
 }

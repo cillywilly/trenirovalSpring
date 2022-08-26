@@ -4,6 +4,7 @@ import com.treniroval.entity.Training;
 import com.treniroval.entity.User;
 import com.treniroval.service.TrainingService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,9 +21,13 @@ public class TrainingController {
     }
 
     @PostMapping("/trains")
-    public List<Training> getTrains() {
-        return trainingService.getTrains(new User("admin", "admin"));
+    public List<Training> getTrains(@RequestBody User user) {
+        return trainingService.getTrains(user);
     }
 
+    @PostMapping("/training")
+    public void createTraining(@RequestBody Training training) {
+        trainingService.createTraining(training);
+    }
 
 }
