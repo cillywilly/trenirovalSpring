@@ -9,5 +9,5 @@ public interface ExerciseDAO {
 
     List<Exercise> getExercises(Training training);
 
-    void createExercise(Exercise exercise);
+    void createUpdateExercise(Exercise exercise);
 }

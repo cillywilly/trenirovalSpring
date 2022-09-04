@@ -17,22 +17,40 @@ public class ApproachDAOImpl implements ApproachDAO {
     private final JdbcTemplate jdbcTemplate;
 
     private static final String GET_APPROACHES_BY_TRAINING = "SELECT * FROM APPROACH WHERE TRAINING_ID = ?";
-    private static final String CREATE_APPROACH = "INSERT INTO Approach (training_id, exercise_id, approach_number, repeat, workload) values (?, ?, ?, ?, ?)";
+    private static final String CREATE_APPROACH = "INSERT INTO treniroval.APPROACH (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD) VALUES (?, ?, ?, ?, ?)";
+    private static final String UPDATE_APPROACH = "UPDATE treniroval.APPROACH SET TRAINING_ID = ?, EXERCISE_ID = ?, APPROACH_NUMBER = ?, repetitions_number = ?, WORKLOAD = ? WHERE ID = ?";
+    private static final String DELETE_APPROACH = "DELETE FROM treniroval.APPROACH WHERE ID = ?";
 
     @Override
     public List<Approach> getApproaches(Training training) {
-//todo        return jdbcTemplate.query(GET_APPROACHES_BY_TRAINING, BeanPropertyRowMapper.newInstance(Approach.class), training.getId());
-        return jdbcTemplate.query(GET_APPROACHES_BY_TRAINING, BeanPropertyRowMapper.newInstance(Approach.class),1);
+        return jdbcTemplate.query(GET_APPROACHES_BY_TRAINING, BeanPropertyRowMapper.newInstance(Approach.class),training.getId());
     }
 
     @Override
     public void createApproach(Approach approach) {
-        jdbcTemplate.update(CREATE_APPROACH
-                , approach.getTrainingId()
-                , approach.getExerciseId()
-                , approach.getApproachNumber()
-                , approach.getRepeat()
-                , approach.getWorkload()
-                );
+        if (approach.getId() == 0) {
+            jdbcTemplate.update(CREATE_APPROACH
+                    , approach.getTrainingId()
+                    , approach.getExerciseId()
+                    , approach.getApproachNumber()
+                    , approach.getRepetitions_number()
+                    , approach.getWorkload()
+            );
+        } else {
+            jdbcTemplate.update(UPDATE_APPROACH
+                    , approach.getTrainingId()
+                    , approach.getExerciseId()
+                    , approach.getApproachNumber()
+                    , approach.getRepetitions_number()
+                    , approach.getWorkload()
+                    , approach.getId()
+            );
+        }
+
+    }
+
+    @Override
+    public void deleteApproach(Approach approach) {
+        jdbcTemplate.update(DELETE_APPROACH, approach.getId());
     }
 }

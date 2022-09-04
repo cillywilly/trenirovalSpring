@@ -2,10 +2,7 @@ package com.treniroval.controller;
 
 import com.treniroval.entity.User;
 import com.treniroval.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -18,13 +15,15 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public void createUser() {
-        userService.createUser(new User("admin", "admin"));
+    public User createUser(@RequestBody User user) {
+        return userService.createUpdateUser(user);
     }
+    //jdbcTemplate.update - обновит если такой ИД есть и создаст новый если нет?
 
     @GetMapping("/user")
-    public User getUser() {
-        return userService.getUser(1);
+    public User getUser(@RequestParam Long id) {
+        return userService.getUser(id);
     }
 
+    //dropPassword?
 }

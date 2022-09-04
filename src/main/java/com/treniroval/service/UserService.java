@@ -3,7 +3,7 @@ package com.treniroval.service;
 import com.treniroval.entity.User;
 
 public interface UserService {
-    int createUser(User user);
+    User createUpdateUser(User user);
 
-    User getUser(int id);
+    User getUser(Long id);
 }

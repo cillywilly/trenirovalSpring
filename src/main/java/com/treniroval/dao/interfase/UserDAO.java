@@ -3,9 +3,8 @@ package com.treniroval.dao.interfase;
 import com.treniroval.entity.User;
 
 public interface UserDAO {
-    User getUser(int id);
+    User getUser(Long id);
 
-    int createUser(User user);
+    User createUpdateUser(User user);
 
-    User updateUser(User user);
 }

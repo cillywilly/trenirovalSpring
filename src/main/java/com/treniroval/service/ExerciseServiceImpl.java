@@ -25,6 +25,6 @@ public class ExerciseServiceImpl implements ExerciseService {
 
     @Override
     public void createExercise(Exercise exercise) {
-        exerciseDAO.createExercise(exercise);
+        exerciseDAO.createUpdateExercise(exercise);
     }
 }

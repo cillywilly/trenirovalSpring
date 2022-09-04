@@ -28,4 +28,9 @@ public class ApproachServiceImpl implements ApproachService {
         approachDAO.createApproach(approach);
     }
 
+    @Override
+    public void deleteApproach(Approach approach) {
+        approachDAO.deleteApproach(approach);
+    }
+
 }

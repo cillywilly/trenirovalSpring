@@ -9,6 +9,16 @@
       "name": "spring.datasource.userpassword",
       "type": "java.lang.String",
       "description": "Description for spring.datasource.userpassword."
+    },
+    {
+      "name": "spring.jpa.hibernate.ddl-aut",
+      "type": "java.lang.String",
+      "description": "Description for spring.jpa.hibernate.ddl-aut."
+    },
+    {
+      "name": "spring.jpa.hibernate.ddl-aut",
+      "type": "java.lang.String",
+      "description": "Description for spring.jpa.hibernate.ddl-aut."
     }
   ]
 }

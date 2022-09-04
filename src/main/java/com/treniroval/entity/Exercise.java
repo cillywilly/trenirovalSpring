@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "EXERCISE")
+@Table(name = "exercise")
 public class Exercise {
 
     @OneToMany
@@ -14,7 +14,7 @@ public class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int id;
+    private Long id;
 
     @Column(name = "EXERCISE_NAME")
     private String exerciseName;
@@ -34,11 +34,11 @@ public class Exercise {
                 '}';
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

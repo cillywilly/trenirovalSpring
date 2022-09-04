@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "APPROACH")
+@Table(name = "approach")
 @Getter
 @Setter
 public class Approach {
@@ -14,28 +14,28 @@ public class Approach {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int id;
+    private Long id;
 
     @Column(name = "TRAINING_ID")
-    private int trainingId;
+    private Long trainingId;
 
     @Column(name = "EXERCISE_ID")
-    private int exerciseId;
+    private Long exerciseId;
 
     @Column(name = "APPROACH_NUMBER")
     private int approachNumber;
 
-    @Column(name = "REPEAT")
-    private int repeat;
+    @Column(name = "repetitions_number")
+    private int repetitions_number;
 
     @Column(name = "WORKLOAD")
     private int workload;
 
-    public Approach(int trainingId, int exerciseId, int approachNumber, int repeat, int workload) {
+    public Approach(Long trainingId, Long exerciseId, int approachNumber, int repetitions_number, int workload) {
         this.trainingId = trainingId;
         this.exerciseId = exerciseId;
         this.approachNumber = approachNumber;
-        this.repeat = repeat;
+        this.repetitions_number = repetitions_number;
         this.workload = workload;
     }
 
@@ -48,8 +48,8 @@ public class Approach {
                 "idTrainingExercise=" + id +
                 ", idTraining=" + trainingId +
                 ", idExercise=" + exerciseId +
-                ", approach='" + approachNumber + '\'' +
-                ", repeat='" + repeat + '\'' +
+                ", approachNumber='" + approachNumber + '\'' +
+                ", repetitions_number='" + repetitions_number + '\'' +
                 ", workload='" + workload + '\'' +
                 '}';
     }

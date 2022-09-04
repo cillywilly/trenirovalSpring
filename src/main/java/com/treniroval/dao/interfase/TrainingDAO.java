@@ -9,5 +9,7 @@ public interface TrainingDAO {
 
     List<Training> getTrains(User user);
 
-    void createTraining(Training training);
+    void createUpdateTraining(Training training);
+
+    void deleteTraining(Training training);
 }

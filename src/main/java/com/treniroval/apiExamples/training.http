@@ -1,0 +1,31 @@
+POST http://localhost:8080/api/trains
+Content-Type: application/json
+
+{
+  "id": 1,
+  "login": "admin1",
+  "password": "admin1"
+}
+
+###
+
+POST http://localhost:8080/api/training
+Content-Type: application/json
+
+{
+  "trainingTopic": "name",
+  "date": "11.11.1111 11:11:11",
+  "userId": 1
+}
+
+###
+
+POST http://localhost:8080/api/training
+Content-Type: application/json
+
+{
+  "id": 1,
+  "trainingTopic": "name1",
+  "date": "11.11.1111 11:11:11",
+  "userId": 1
+}

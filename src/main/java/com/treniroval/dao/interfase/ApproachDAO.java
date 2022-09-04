@@ -10,4 +10,6 @@ public interface ApproachDAO {
     List<Approach> getApproaches(Training training);
 
     void createApproach(Approach approach);
+
+    void deleteApproach(Approach approach);
 }

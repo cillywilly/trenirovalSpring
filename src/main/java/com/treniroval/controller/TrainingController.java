@@ -3,10 +3,7 @@ package com.treniroval.controller;
 import com.treniroval.entity.Training;
 import com.treniroval.entity.User;
 import com.treniroval.service.TrainingService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,8 +13,8 @@ public class TrainingController {
 
     private final TrainingService trainingService;
 
-    public TrainingController(TrainingService trenService) {
-        this.trainingService = trenService;
+    public TrainingController(TrainingService trainingService) {
+        this.trainingService = trainingService;
     }
 
     @PostMapping("/trains")
@@ -29,5 +26,13 @@ public class TrainingController {
     public void createTraining(@RequestBody Training training) {
         trainingService.createTraining(training);
     }
+
+    @DeleteMapping("/training")
+    public void deleteTraining(@RequestBody Training training) {
+        trainingService.deleteTraining(training);
+    }
+
+    //updateTraining-> approaches
+    //deleteTraining
 
 }

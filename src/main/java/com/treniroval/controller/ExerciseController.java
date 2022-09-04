@@ -20,7 +20,7 @@ public class ExerciseController {
         this.exerciseService = exerciseService;
     }
 
-    @PostMapping("/exercises")
+    @PostMapping("/exercises")//udoli
     public List<Exercise> getExercises(@RequestBody Training training) {
 //        Training training = new Training("Hello trainig", "21.08.2022 19:54:00", 1);
         return exerciseService.getExercises(training);
@@ -30,5 +30,5 @@ public class ExerciseController {
     public void createExercise(@RequestBody Exercise exercise) {
         exerciseService.createExercise(exercise);
     }
-
+    //jdbcTemplate.update - обновит если такой ИД есть и создаст новый если нет?
 }

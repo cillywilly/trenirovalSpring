@@ -19,6 +19,7 @@ public class ExerciseDAOImpl implements ExerciseDAO {
 
     private static final String GET_ALL_EXERCISES = "SELECT * FROM EXERCISE";
     private static final String INSERT_EXERCISE = "INSERT into exercise (EXERCISE_NAME) VALUES (?)";
+    private static final String UPDATE_EXERCISE = "UPDATE 'EXERCISE' SET EXERCISE_NAME = ? WHERE id = ?";
 
     @Override
     public List<Exercise> getExercises(Training training) {
@@ -26,7 +27,11 @@ public class ExerciseDAOImpl implements ExerciseDAO {
     }
 
     @Override
-    public void createExercise(Exercise exercise) {
-        jdbcTemplate.update(INSERT_EXERCISE, exercise.getExerciseName());
+    public void createUpdateExercise(Exercise exercise) {
+        if (exercise.getId() == 0) {
+            jdbcTemplate.update(UPDATE_EXERCISE, exercise.getExerciseName(), exercise.getId());
+        } else {
+            jdbcTemplate.update(INSERT_EXERCISE, exercise.getExerciseName());
+        }
     }
 }

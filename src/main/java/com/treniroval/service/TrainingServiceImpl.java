@@ -25,7 +25,12 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Override
     public void createTraining(Training training) {
-        trainingDAO.createTraining(training);
+        trainingDAO.createUpdateTraining(training);
+    }
+
+    @Override
+    public void deleteTraining(Training training) {
+        trainingDAO.deleteTraining(training);
     }
 
 

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "TRAINING")
+@Table(name = "training")
 @Getter
 @Setter
 public class Training {
@@ -19,7 +19,7 @@ public class Training {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int id;
+    private Long id;
 
     @Column(name = "TRAINING_TOPIC")
     private String trainingTopic;
@@ -28,9 +28,9 @@ public class Training {
     private String date;
 
     @Column(name = "USER_ID")
-    private int userId;
+    private Long userId;
 
-    public Training(String trainingTopic, String date, int userId) {
+    public Training(String trainingTopic, String date, Long userId) {
         this.trainingTopic = trainingTopic;
         this.date = date;
         this.userId = userId;
