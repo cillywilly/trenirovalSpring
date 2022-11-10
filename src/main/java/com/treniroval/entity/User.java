@@ -13,18 +13,18 @@ import java.util.List;
 public class User {
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "user_id")
     private List<Training> trainings;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "LOGIN")
+    @Column(name = "login")
     private String login;
 
-    @Column(name = "PASSWORD")
+    @Column(name = "password")
     private String password;
 
     public User(String login, String password) {

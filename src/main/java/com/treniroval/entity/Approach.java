@@ -13,22 +13,22 @@ public class Approach {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "TRAINING_ID")
+    @Column(name = "training_id")
     private Long trainingId;
 
-    @Column(name = "EXERCISE_ID")
+    @Column(name = "exercise_id")
     private Long exerciseId;
 
-    @Column(name = "APPROACH_NUMBER")
+    @Column(name = "approach_number")
     private int approachNumber;
 
     @Column(name = "repetitions_number")
     private int repetitions_number;
 
-    @Column(name = "WORKLOAD")
+    @Column(name = "workload")
     private int workload;
 
     public Approach(Long trainingId, Long exerciseId, int approachNumber, int repetitions_number, int workload) {

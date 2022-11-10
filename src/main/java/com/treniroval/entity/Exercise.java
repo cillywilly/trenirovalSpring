@@ -8,15 +8,15 @@ import java.util.List;
 public class Exercise {
 
     @OneToMany
-    @JoinColumn(name = "EXERCISE_ID")
+    @JoinColumn(name = "exercise_id")
     private List<Approach> approaches;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "EXERCISE_NAME")
+    @Column(name = "exercise_name")
     private String exerciseName;
 
     public Exercise(String exerciseName) {

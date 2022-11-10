@@ -13,21 +13,21 @@ import java.util.List;
 public class Training {
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "TRAINING_ID")
+    @JoinColumn(name = "training_id")
     private List<Approach> approaches;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "TRAINING_TOPIC")
+    @Column(name = "training_topic")
     private String trainingTopic;
 
-    @Column(name = "DATE")
+    @Column(name = "date")
     private String date;
 
-    @Column(name = "USER_ID")
+    @Column(name = "user_id")
     private Long userId;
 
     public Training(String trainingTopic, String date, Long userId) {

@@ -1,49 +1,40 @@
-CREATE TABLE approach
+create table approach
 (
-    id              BIGINT AUTO_INCREMENT NOT NULL,
-    training_id     BIGINT                NOT NULL,
-    exercise_id     BIGINT                NOT NULL,
-    approach_number INT                NOT NULL,
-    repetitions_number        INT                NOT NULL,
-    workload        INT                NOT NULL,
-    CONSTRAINT pk_approach PRIMARY KEY (id)
-);
-
-
-CREATE TABLE exercise
+    id                 bigint not null auto_increment,
+    approach_number    integer,
+    exercise_id        bigint,
+    repetitions_number integer,
+    training_id        bigint,
+    workload           integer,
+    primary key (id)
+)
+create table exercise
 (
-    id            BIGINT AUTO_INCREMENT NOT NULL,
-    exercise_name VARCHAR(255)       NULL,
-    CONSTRAINT pk_exercise PRIMARY KEY (id)
-);
-
-CREATE TABLE training
+    id            bigint not null auto_increment,
+    exercise_name varchar(255),
+    primary key (id)
+)
+create table training
 (
-    id             BIGINT AUTO_INCREMENT NOT NULL,
-    training_topic VARCHAR(255)       NULL,
-    date           VARCHAR(255)       NULL,
-    user_id        BIGINT                NOT NULL,
-    CONSTRAINT pk_training PRIMARY KEY (id)
-);
-
-
-CREATE TABLE user
+    id             bigint not null auto_increment,
+    date           varchar(255),
+    training_topic varchar(255),
+    user_id        bigint,
+    primary key (id)
+)
+create table user
 (
-    id       BIGINT AUTO_INCREMENT NOT NULL,
-    login    VARCHAR(255)       NULL,
-    password VARCHAR(255)       NULL,
-    CONSTRAINT pk_user PRIMARY KEY (id)
-);
-
-
-ALTER TABLE training
-    ADD CONSTRAINT FK_TRAINING_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);
-
-ALTER TABLE approach
-    ADD CONSTRAINT FK_APPROACH_ON_EXERCISE FOREIGN KEY (exercise_id) REFERENCES exercise (id);
-
-ALTER TABLE approach
-    ADD CONSTRAINT FK_APPROACH_ON_TRAINING FOREIGN KEY (training_id) REFERENCES training (id);
+    id       bigint not null auto_increment,
+    login    varchar(255),
+    password varchar(255),
+    primary key (id)
+)
+alter table approach
+    add constraint approach_training foreign key (training_id) references training (id);
+alter table approach
+    add constraint approach_exercise foreign key (exercise_id) references exercise (id);
+alter table training
+    add constraint training_user foreign key (user_id) references user (id);
 
 INSERT INTO user (LOGIN, PASSWORD)
 VALUES ('admin', 'admin');

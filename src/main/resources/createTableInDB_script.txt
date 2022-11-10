@@ -47,34 +47,34 @@ ALTER TABLE approach
 ALTER TABLE approach
     ADD CONSTRAINT FK_APPROACH_ON_TRAINING FOREIGN KEY (training_id) REFERENCES training (id);
 
-INSERT INTO treniroval.user (LOGIN, PASSWORD)
+INSERT INTO user (LOGIN, PASSWORD)
 VALUES ('admin', 'admin');
 
 
-insert into treniroval.training (TRAINING_TOPIC, DATE, USER_ID)
+insert into training (TRAINING_TOPIC, DATE, USER_ID)
 VALUES ('Грудь', '11.11.1111 11:11:11', 1);
-insert into treniroval.training (TRAINING_TOPIC, DATE, USER_ID)
+insert into training (TRAINING_TOPIC, DATE, USER_ID)
 VALUES ('Спина', '11.11.1111 11:11:12', 1);
-insert into treniroval.training (TRAINING_TOPIC, DATE, USER_ID)
+insert into training (TRAINING_TOPIC, DATE, USER_ID)
 VALUES ('Ноги', '11.11.1111 11:11:13', 1);
 
-insert into treniroval.exercise (EXERCISE_NAME)
+insert into exercise (EXERCISE_NAME)
     VALUE ('Жим лёжа');
-insert into treniroval.exercise (EXERCISE_NAME)
+insert into exercise (EXERCISE_NAME)
     VALUE ('Приседания');
-insert into treniroval.exercise (EXERCISE_NAME)
+insert into exercise (EXERCISE_NAME)
     VALUE ('Становая тяга');
 
-insert into treniroval.approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
+insert into approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
     VALUE (1,1,1,10,40);
-insert into treniroval.approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
+insert into approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
     VALUE (1,1,2,10,50);
-insert into treniroval.approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
+insert into approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
     VALUE (1,1,3,10,60);
-insert into treniroval.approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
+insert into approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
     VALUE (2,2,1,10,40);
-insert into treniroval.approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
+insert into approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
     VALUE (3,3,1,10,50);
-insert into treniroval.approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
+insert into approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
     VALUE (3,3,2,10,60);
 
