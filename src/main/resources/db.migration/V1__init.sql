@@ -55,15 +55,15 @@ insert into exercise (EXERCISE_NAME)
     VALUE ('Становая тяга');
 
 insert into approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
-    VALUE (1,1,1,10,40);
+    VALUE (1, 1, 1, 10, 40);
 insert into approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
-    VALUE (1,1,2,10,50);
+    VALUE (1, 1, 2, 10, 50);
 insert into approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
-    VALUE (1,1,3,10,60);
+    VALUE (1, 1, 3, 10, 60);
 insert into approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
-    VALUE (2,2,1,10,40);
+    VALUE (2, 2, 1, 10, 40);
 insert into approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
-    VALUE (3,3,1,10,50);
+    VALUE (3, 3, 1, 10, 50);
 insert into approach (TRAINING_ID, EXERCISE_ID, APPROACH_NUMBER, repetitions_number, WORKLOAD)
-    VALUE (3,3,2,10,60);
+    VALUE (3, 3, 2, 10, 60);
 

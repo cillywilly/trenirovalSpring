@@ -2,7 +2,6 @@ package com.treniroval.service;
 
 import com.treniroval.dao.interfase.ExerciseDAO;
 import com.treniroval.entity.Exercise;
-import com.treniroval.entity.Training;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,8 +18,8 @@ public class ExerciseServiceImpl implements ExerciseService {
 
     @Override
     @Transactional
-    public List<Exercise> getExercises(Training training) {
-        return exerciseDAO.getExercises(training);
+    public List<Exercise> getExercises() {
+        return exerciseDAO.getExercises();
     }
 
     @Override

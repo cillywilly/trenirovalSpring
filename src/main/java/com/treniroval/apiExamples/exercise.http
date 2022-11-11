@@ -1,5 +1,21 @@
-POST http://localhost:8080/api/exercise
+GET http://localhost:8080/api/exercises
+Content-Type: application/json
 
 ###
 
-POST http://localhost:8080/api/exercises
+POST http://localhost:8080/api/exercise
+Content-Type: application/json
+
+{
+  "exerciseName": "Гантели на бицепс"
+}
+
+###
+
+POST http://localhost:8080/api/exercise
+Content-Type: application/json
+
+{
+  "id": 6,
+  "exerciseName": "Гантели на бицепс"
+}

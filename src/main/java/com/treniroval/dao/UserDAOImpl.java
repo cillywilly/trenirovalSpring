@@ -13,9 +13,9 @@ public class UserDAOImpl implements UserDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
-    private static final String GET_USER_BY_ID = "SELECT * FROM `USER` WHERE ID = ?";
-    private static final String INSERT_USER = "INSERT INTO `USER` (login, password) values (?, ?)";
-    private static final String UPDATE_USER = "UPDATE `USER` SET login = ?, password = ? WHERE id = ?";
+    private static final String GET_USER_BY_ID = "SELECT * FROM user WHERE ID = ?";
+    private static final String INSERT_USER = "INSERT INTO user (login, password) values (?, ?)";
+    private static final String UPDATE_USER = "UPDATE user SET login = ?, password = ? WHERE id = ?";
 
     @Override
     public User getUser(Long id) {
@@ -24,7 +24,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User createUpdateUser(User user) {
-        if (user.getId() == 0) {
+        if (user.getId() == null) {
             jdbcTemplate.update(INSERT_USER, user.getLogin(), user.getPassword());
             return null;
         } else {

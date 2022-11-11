@@ -15,10 +15,9 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public User createUser(@RequestBody User user) {
+    public User createUpdateUser(@RequestBody User user) {
         return userService.createUpdateUser(user);
     }
-    //jdbcTemplate.update - обновит если такой ИД есть и создаст новый если нет?
 
     @GetMapping("/user")
     public User getUser(@RequestParam Long id) {

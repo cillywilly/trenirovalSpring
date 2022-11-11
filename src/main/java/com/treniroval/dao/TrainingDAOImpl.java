@@ -28,11 +28,10 @@ public class TrainingDAOImpl implements TrainingDAO {
 
     @Override
     public void createUpdateTraining(Training training) {
-        if (training.getId() == 0) {
+        if (training.getId() == null) {
             jdbcTemplate.update(CREATE_TRAINING, training.getTrainingTopic(), training.getDate(), training.getUserId());
         } else {
             jdbcTemplate.update(UPDATE_TRAINING, training.getTrainingTopic(), training.getDate(), training.getUserId(), training.getId());
-
         }
     }
 

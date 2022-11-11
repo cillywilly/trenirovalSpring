@@ -2,7 +2,6 @@ package com.treniroval.dao;
 
 import com.treniroval.dao.interfase.ExerciseDAO;
 import com.treniroval.entity.Exercise;
-import com.treniroval.entity.Training;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,21 +16,22 @@ public class ExerciseDAOImpl implements ExerciseDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
-    private static final String GET_ALL_EXERCISES = "SELECT * FROM EXERCISE";
+    private static final String GET_ALL_EXERCISES = "SELECT * FROM exercise";
     private static final String INSERT_EXERCISE = "INSERT into exercise (EXERCISE_NAME) VALUES (?)";
-    private static final String UPDATE_EXERCISE = "UPDATE 'EXERCISE' SET EXERCISE_NAME = ? WHERE id = ?";
+    private static final String UPDATE_EXERCISE = "UPDATE exercise SET EXERCISE_NAME = ? WHERE id = ?";
 
     @Override
-    public List<Exercise> getExercises(Training training) {
+    public List<Exercise> getExercises() {
         return jdbcTemplate.query(GET_ALL_EXERCISES, BeanPropertyRowMapper.newInstance(Exercise.class));
     }
 
     @Override
     public void createUpdateExercise(Exercise exercise) {
-        if (exercise.getId() == 0) {
-            jdbcTemplate.update(UPDATE_EXERCISE, exercise.getExerciseName(), exercise.getId());
-        } else {
+        if (exercise.getId() == null) {
             jdbcTemplate.update(INSERT_EXERCISE, exercise.getExerciseName());
+        } else {
+            jdbcTemplate.update(UPDATE_EXERCISE, exercise.getExerciseName(), exercise.getId());
         }
     }
+
 }
