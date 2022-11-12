@@ -28,7 +28,7 @@ public class ApproachDAOImpl implements ApproachDAO {
 
     @Override
     public void createApproach(Approach approach) {
-        if (approach.getId() == 0) {
+        if (approach.getId() == null) {
             jdbcTemplate.update(CREATE_APPROACH
                     , approach.getTrainingId()
                     , approach.getExerciseId()

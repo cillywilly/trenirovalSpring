@@ -7,7 +7,7 @@ POST http://localhost:8080/api/exercise
 Content-Type: application/json
 
 {
-  "exerciseName": "Гантели на бицепс"
+  "exerciseName": "Становая тяга"
 }
 
 ###

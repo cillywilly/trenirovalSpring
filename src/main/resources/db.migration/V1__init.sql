@@ -7,13 +7,13 @@ create table approach
     training_id        bigint,
     workload           integer,
     primary key (id)
-)
+);
 create table exercise
 (
     id            bigint not null auto_increment,
     exercise_name varchar(255),
     primary key (id)
-)
+);
 create table training
 (
     id             bigint not null auto_increment,
@@ -21,14 +21,14 @@ create table training
     training_topic varchar(255),
     user_id        bigint,
     primary key (id)
-)
+);
 create table user
 (
     id       bigint not null auto_increment,
     login    varchar(255),
     password varchar(255),
     primary key (id)
-)
+);
 alter table approach
     add constraint approach_training foreign key (training_id) references training (id);
 alter table approach
