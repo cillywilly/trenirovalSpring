@@ -4,11 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class MainController {
+public class HelloController {
+
+
 
     @GetMapping("/main")
-    public String getTrains() {
-        return "greeting";
+    public String getMain() {
+        return "main";
     }
 
 }
