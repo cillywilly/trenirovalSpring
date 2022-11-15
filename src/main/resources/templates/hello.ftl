@@ -2,8 +2,6 @@
 <#import "parts/login.ftl" as l>
 
 <@c.page>
-  <h1>Welcome!</h1>
-  <div>
-    <@l.logout />
-  </div>
+  <h1>hello!</h1>
+  <a href="/main">Main page</a>
 </@c.page>

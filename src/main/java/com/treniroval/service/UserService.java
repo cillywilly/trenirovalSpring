@@ -6,4 +6,7 @@ public interface UserService {
     User createUpdateUser(User user);
 
     User getUser(Long id);
+
+    User getUserByLogin(String login);
+
 }

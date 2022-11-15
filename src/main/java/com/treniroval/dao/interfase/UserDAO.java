@@ -7,4 +7,5 @@ public interface UserDAO {
 
     User createUpdateUser(User user);
 
+    User getUserByLogin(String login);
 }

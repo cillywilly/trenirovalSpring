@@ -23,7 +23,7 @@ public class ApproachDAOImpl implements ApproachDAO {
 
     @Override
     public List<Approach> getApproaches(Training training) {
-        return jdbcTemplate.query(GET_APPROACHES_BY_TRAINING, BeanPropertyRowMapper.newInstance(Approach.class),training.getId());
+        return jdbcTemplate.query(GET_APPROACHES_BY_TRAINING, BeanPropertyRowMapper.newInstance(Approach.class), training.getId());
     }
 
     @Override

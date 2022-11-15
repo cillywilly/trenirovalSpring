@@ -2,8 +2,8 @@
 <#import "parts/login.ftl" as l>
 
 <@c.page>
-  <h1>Welcome!</h1>
-  <div>
-    <@l.logout />
-  </div>
+  Add new user
+${message}
+  <@l.login "/registration"/>
+
 </@c.page>
