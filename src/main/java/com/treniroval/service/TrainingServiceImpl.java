@@ -3,19 +3,17 @@ package com.treniroval.service;
 import com.treniroval.dao.interfase.TrainingDAO;
 import com.treniroval.entity.Training;
 import com.treniroval.entity.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TrainingServiceImpl implements TrainingService {
 
     private final TrainingDAO trainingDAO;
-
-    public TrainingServiceImpl(TrainingDAO trainingDAO) {
-        this.trainingDAO = trainingDAO;
-    }
 
     @Override
     @Transactional

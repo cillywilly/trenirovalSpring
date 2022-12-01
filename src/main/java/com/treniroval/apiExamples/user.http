@@ -20,3 +20,24 @@ Content-Type: application/json
   "login": "admi",
   "password": "admi"
 }
+
+
+###
+
+POST http://localhost:8080/registration
+Content-Type: application/json
+
+{
+  "idUser": 2,
+  "login": "y",
+  "password": "y"
+}
+
+
+###
+
+GET http://localhost:8080/
+Content-Type: application/json
+
+{
+}

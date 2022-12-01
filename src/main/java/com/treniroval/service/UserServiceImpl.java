@@ -2,40 +2,41 @@ package com.treniroval.service;
 
 import com.treniroval.dao.interfase.UserDAO;
 import com.treniroval.entity.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class UserServiceImpl implements UserService, UserDetailsService {
+@RequiredArgsConstructor
+@Slf4j
+public class UserServiceImpl implements UserService{
 
     private final UserDAO userDAO;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserDAO userDAO) {
-        this.userDAO = userDAO;
-    }
-
-    @Override
     @Transactional
     public User createUpdateUser(User user) {
-        return userDAO.createUpdateUser(user);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User resUser = userDAO.createUpdateUser(user);
+        log.info("created user : " + resUser);
+        return resUser;
     }
 
-    @Override
     @Transactional
     public User getUser(Long id) {
-        return userDAO.getUser(id);
+        User resUser = userDAO.getUser(id);
+        log.info("get user : " + resUser);
+        return resUser;
     }
 
-    @Override
-    public User getUserByLogin(String login) {
-        return userDAO.getUserByLogin(login);
+    @Transactional
+    public User findByUsername(String login) {
+        User resUser = userDAO.findByUsername(login);
+        log.info("find user : " + resUser);
+        return resUser;
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        return (UserDetails) userDAO.getUserByLogin(login);
-    }
+
 }
