@@ -7,6 +7,6 @@ public interface UserService {
 
     User getUser(Long id);
 
-    User getUserByLogin(String login);
+    User findByUsername(String login);
 
 }

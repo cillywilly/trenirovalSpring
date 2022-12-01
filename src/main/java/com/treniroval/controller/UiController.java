@@ -3,25 +3,25 @@ package com.treniroval.controller;
 import com.treniroval.entity.Role;
 import com.treniroval.entity.User;
 import com.treniroval.service.UserService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collections;
 import java.util.Map;
 
 @Controller
+@RequiredArgsConstructor
+@Slf4j
 public class UiController {
 
     private final UserService userService;
 
-    public UiController(UserService userService) {
-        this.userService = userService;
-    }
-
     @GetMapping("/main")
     public String getMain() {
+        log.info("you are in!");
         return "main";
     }
 
@@ -32,16 +32,19 @@ public class UiController {
     }
 
     @PostMapping("/registration")
-    public String addUser(User user, Map<String, Object> model, @RequestParam String email) {
-        User userFromDb = userService.getUserByLogin(user.getLogin());
+    public String addUser(User user, Map<String, Object> model) {
+        User userFromDb = userService.findByUsername(user.getLogin());
+        log.info("findByUsername : " + userFromDb);
         if (userFromDb != null) {
             model.put("message", "User exists!");
+            log.info("User exists!");
             return "registration";
         }
         user.setActive(true);
-        user.setEmail(email);
+//        user.setEmail(email);
         user.setRoles(Collections.singleton(Role.USER));
         userService.createUpdateUser(user);
+        log.info("created user : " + user);
         return "redirect:/login";
     }
 

@@ -1,18 +1,17 @@
 package com.treniroval.entity;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.lang.Nullable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "usr")
-@Getter
-@Setter
-public class User {
+public class User implements UserDetails {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -58,7 +57,94 @@ public class User {
         return "User{" +
                 "idUser=" + id +
                 ", login=" + login +
-                ", password=" + password +
                 '}';
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
+    }
+
+    @Override
+    public String getUsername() {
+        return login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public List<Training> getTrainings() {
+        return trainings;
+    }
+
+    public void setTrainings(List<Training> trainings) {
+        this.trainings = trainings;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Nullable
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(@Nullable String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Nullable
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(@Nullable Boolean active) {
+        this.active = active;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
