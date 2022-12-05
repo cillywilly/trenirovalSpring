@@ -1,11 +1,10 @@
 package com.treniroval.service;
 
 import com.treniroval.entity.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UserService {
-    User createUser(User user);
-    User updateUserInfo(User user);
-    User updateUserPassword(User user);
+public interface UserService extends UserDetailsService {
+    User createUpdateUser(User user);
 
     User getUser(Long id);
 
