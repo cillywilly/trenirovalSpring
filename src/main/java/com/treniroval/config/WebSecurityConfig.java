@@ -1,19 +1,13 @@
 package com.treniroval.config;
 
-import com.treniroval.service.CustomUserDetailsService;
+import com.treniroval.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import javax.annotation.Resource;
 
 @Configuration
 @EnableWebSecurity
@@ -21,8 +15,8 @@ import javax.annotation.Resource;
 @Slf4j
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Resource
-    private final CustomUserDetailsService customUserDetailsService;
+    private final EncryptionConfig encryptionConfig;
+    private final UserServiceImpl userService;
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -43,12 +37,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.authenticationProvider(authProvider());
         auth
-                .userDetailsService(customUserDetailsService)
-                .passwordEncoder(passwordEncoder());
+                .userDetailsService(userService)
+                .passwordEncoder(encryptionConfig.getPasswordEncoder());
 //
 //        auth.jdbcAuthentication()
 //                .dataSource(dataSource)
-//                .passwordEncoder(passwordEncoder())
+//                .passwordEncoder(encryptionConfig.getPasswordEncoder())
 //                .usersByUsernameQuery("select login, password, active from usr where login=?")
 //                .authoritiesByUsernameQuery("select usr.login, user_role.roles " +
 //                        "from usr inner join user_role on usr.id = user_role.user_id " +
@@ -56,17 +50,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         log.info("search user");
     }
 
-    @Bean
-    public DaoAuthenticationProvider authProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(customUserDetailsService);
-        authProvider.setPasswordEncoder(passwordEncoder());
-        return authProvider;
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(8);
-    }
+//    @Bean
+//    public DaoAuthenticationProvider authProvider() {
+//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+//        authProvider.setUserDetailsService(customUserDetailsService);
+//        authProvider.setPasswordEncoder(passwordEncoder());
+//        return authProvider;
+//    }
 
 }
