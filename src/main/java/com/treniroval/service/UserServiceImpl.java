@@ -7,7 +7,6 @@ import com.treniroval.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -22,9 +21,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private final Encriptor passwordEncoder;
 
     @Transactional
-    public User createUpdateUser(User user) {
+    public User createUser(User user) {
         user.setPassword(passwordEncoder.passwordEncoder().encode(user.getPassword()));
-        User resUser = userDAO.createUpdateUser(user);
+        User resUser = userDAO.createUser(user);
         log.info("created user : " + resUser);
         return resUser;
     }
