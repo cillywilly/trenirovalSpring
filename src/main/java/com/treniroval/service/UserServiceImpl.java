@@ -19,9 +19,9 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoderConfig passwordEncoder;
 
     @Transactional
-    public User createUpdateUser(User user) {
+    public User createUser(User user) {
         user.setPassword(passwordEncoder.passwordEncoder().encode(user.getPassword()));
-        User resUser = userDAO.createUpdateUser(user);
+        User resUser = userDAO.createUser(user);
         log.info("created user : " + resUser);
         return resUser;
     }
