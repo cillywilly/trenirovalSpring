@@ -15,9 +15,9 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/user")
-    public User createUpdateUser(@RequestBody User user) {
-        log.info("createUpdateUser : " + user);
-        return userService.createUpdateUser(user);
+    public User createUser(@RequestBody User user) {
+        log.info("createUser : " + user);
+        return userService.createUser(user);
     }
 
     @GetMapping("/user")
