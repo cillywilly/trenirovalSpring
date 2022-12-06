@@ -42,11 +42,14 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
 
-    public User(String login, String password, String email, boolean active) {
+    public User(List<Training> trainings, Long id, @Nullable String login, String password, String email, @Nullable Boolean active, Set<Role> roles) {
+        this.trainings = trainings;
+        this.id = id;
         this.login = login;
         this.password = password;
         this.email = email;
         this.active = active;
+        this.roles = roles;
     }
 
     public User() {
@@ -57,6 +60,7 @@ public class User implements UserDetails {
         return "User{" +
                 "idUser=" + id +
                 ", login=" + login +
+                ", role=" + roles +
                 '}';
     }
 
