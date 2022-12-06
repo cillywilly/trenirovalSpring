@@ -7,7 +7,11 @@ import java.util.List;
 public interface UserDAO {
     User getUser(Long id);
 
-    User createUpdateUser(User user);
+    User createUser(User user);
+
+    User updateUserInfo(User user);
+
+    User updateUserPassword(User user);
 
     User findByUsername(String login);
 

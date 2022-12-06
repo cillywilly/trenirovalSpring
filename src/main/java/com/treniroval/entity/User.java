@@ -13,26 +13,22 @@ import java.util.Set;
 @Table(name = "usr")
 public class User implements UserDetails {
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private List<Training> trainings;
+    public List<Training> getTrainings() {
+        return trainings;
+    }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    public void setTrainings(List<Training> trainings) {
+        this.trainings = trainings;
+    }
 
-    @Column(name = "login")
-    @Nullable
-    private String login;
+    public Long getId() {
+        return id;
+    }
 
-    @Column(name = "password")
-    private String password;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "active")
     @Nullable
     private Boolean active;
 
@@ -52,10 +48,12 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public User() {
+    public void setLogin(@Nullable String login) {
+        this.login = login;
     }
 
     @Override
+
     public String toString() {
         return "User{" +
                 "idUser=" + id +
@@ -65,62 +63,33 @@ public class User implements UserDetails {
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
+    public String getPassword() {
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return login;
+        return this.login;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public List<Training> getTrainings() {
-        return trainings;
-    }
-
-    public void setTrainings(List<Training> trainings) {
-        this.trainings = trainings;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Nullable
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(@Nullable String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public void setPassword(String password) {
@@ -151,4 +120,55 @@ public class User implements UserDetails {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private List<Training> trainings;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "login")
+    @Nullable
+    private String login;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "active")
+    @Nullable
+    private Boolean active;
+
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
+
+
+    public User(List<Training> trainings, Long id, @Nullable String login, String password, String email, @Nullable Boolean active, Set<Role> roles) {
+        this.trainings = trainings;
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.active = active;
+        this.roles = roles;
+    }
+
+    public User(){}
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "idUser=" + id +
+                ", login=" + login +
+                ", role=" + roles +
+                '}';
+    }
+
 }

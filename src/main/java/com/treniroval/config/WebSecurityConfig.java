@@ -1,6 +1,8 @@
 package com.treniroval.config;
 
+
 import com.treniroval.service.UserServiceImpl;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
@@ -21,10 +23,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserServiceImpl userService;
     private final Encriptor passwordEncoder;
 
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .authorizeRequests()
+                .authorizeHttpRequests()
                 .antMatchers("/", "/registration").permitAll()
                 .anyRequest().authenticated()
                 .and()
