@@ -1,6 +1,8 @@
 package com.treniroval.config;
 
-import com.treniroval.service.UserService;
+
+import com.treniroval.service.UserServiceImpl;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
@@ -9,14 +11,18 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import javax.annotation.Resource;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 @Slf4j
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserService userService;
-    private final PasswordEncoderConfig passwordEncoder;
+    @Resource
+    private final UserServiceImpl userService;
+    private final Encriptor passwordEncoder;
+
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {

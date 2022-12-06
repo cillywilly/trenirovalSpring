@@ -1,11 +1,14 @@
 package com.treniroval.service;
 
-import com.treniroval.config.PasswordEncoderConfig;
+
+import com.treniroval.config.Encriptor;
 import com.treniroval.dao.interfase.UserDAO;
 import com.treniroval.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,15 +16,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserDAO userDAO;
-    private final PasswordEncoderConfig passwordEncoder;
+    private final Encriptor passwordEncoder;
 
     @Transactional
-    public User createUser(User user) {
+    public User createUpdateUser(User user) {
         user.setPassword(passwordEncoder.passwordEncoder().encode(user.getPassword()));
-        User resUser = userDAO.createUser(user);
+        User resUser = userDAO.createUpdateUser(user);
         log.info("created user : " + resUser);
         return resUser;
     }
@@ -39,7 +42,6 @@ public class UserServiceImpl implements UserService {
         log.info("find user : " + resUser);
         return resUser;
     }
-
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

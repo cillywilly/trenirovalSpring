@@ -30,8 +30,22 @@ public class User implements UserDetails {
     }
 
     @Nullable
-    public String getLogin() {
-        return login;
+    private Boolean active;
+
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name="user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
+
+
+    public User(List<Training> trainings, Long id, @Nullable String login, String password, String email, @Nullable Boolean active, Set<Role> roles) {
+        this.trainings = trainings;
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.active = active;
+        this.roles = roles;
     }
 
     public void setLogin(@Nullable String login) {
@@ -39,8 +53,13 @@ public class User implements UserDetails {
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles;
+
+    public String toString() {
+        return "User{" +
+                "idUser=" + id +
+                ", login=" + login +
+                ", role=" + roles +
+                '}';
     }
 
     @Override
