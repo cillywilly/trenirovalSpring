@@ -13,4 +13,6 @@ public interface TrainingService {
     void createTraining(Training training);
 
     void deleteTraining(Training training);
+
+    Training getTraining(Long id);
 }

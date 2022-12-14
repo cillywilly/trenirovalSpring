@@ -13,8 +13,8 @@ POST http://localhost:8080/api/training
 Content-Type: application/json
 
 {
-  "trainingTopic": "name",
-  "date": "11.11.1111 11:11:11",
+  "trainingTopic": "Chest",
+  "date": "11.11.2022 19:00",
   "userId": 1
 }
 

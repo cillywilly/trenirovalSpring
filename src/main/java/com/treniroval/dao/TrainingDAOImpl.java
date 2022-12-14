@@ -17,6 +17,7 @@ public class TrainingDAOImpl implements TrainingDAO {
     private final JdbcTemplate jdbcTemplate;
 
     private static final String GET_TRAINING_BY_USER = "SELECT * FROM Training where USER_ID = ?";
+    private static final String GET_TRAINING_BY_ID = "SELECT * FROM Training where id = ?";
     private static final String CREATE_TRAINING = "INSERT INTO Training (TRAINING_TOPIC, DATE, USER_ID) values (?, ?, ?)";
     private static final String UPDATE_TRAINING = "UPDATE Training set TRAINING_TOPIC = ?, DATE = ?, USER_ID = ? WHERE ID = ?";
     private static final String DELETE_TRAINING = "DELETE FROM Training WHERE ID= ?";
@@ -38,6 +39,14 @@ public class TrainingDAOImpl implements TrainingDAO {
     @Override
     public void deleteTraining(Training training) {
         jdbcTemplate.update(DELETE_TRAINING, training.getId());
+    }
+
+    @Override
+    public Training getTraining(Long id) {
+        var trainingList = jdbcTemplate.query(GET_TRAINING_BY_ID, BeanPropertyRowMapper.newInstance(Training.class), id);
+        if (trainingList.isEmpty()) {
+            return null;
+        } else return trainingList.get(0);
     }
 
 }

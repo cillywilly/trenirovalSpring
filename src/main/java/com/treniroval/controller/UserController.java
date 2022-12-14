@@ -4,6 +4,7 @@ import com.treniroval.entity.User;
 import com.treniroval.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,6 +25,14 @@ public class UserController {
     public User getUser(@RequestParam Long id) {
         log.info("getUser : " + id);
         return userService.getUser(id);
+    }
+
+    public User getCurrentUser() {
+        User user = (User) SecurityContextHolder.getContext()
+                .getAuthentication()
+                .getPrincipal();
+        log.info("get current user : " + user);
+        return user;
     }
 
     //dropPassword?

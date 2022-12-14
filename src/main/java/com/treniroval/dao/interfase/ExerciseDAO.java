@@ -1,12 +1,17 @@
 package com.treniroval.dao.interfase;
 
 import com.treniroval.entity.Exercise;
+import com.treniroval.entity.Training;
 
 import java.util.List;
 
 public interface ExerciseDAO {
 
-    List<Exercise> getExercises();
+    List<Exercise> getExercisesByTraining(Training training);
 
-    void createUpdateExercise(Exercise exercise);
+    void createExercise(Exercise exercise);
+
+    void updateExercise(Exercise exercise);
+
+    List<Exercise> getAllExercises();
 }

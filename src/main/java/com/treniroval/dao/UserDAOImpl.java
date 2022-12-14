@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -25,6 +24,7 @@ public class UserDAOImpl implements UserDAO{
     private static final String UPDATE_USER_PASSWORD = "UPDATE usr SET password = ? WHERE id = ?";
     private static final String GET_USER_BY_LOGIN = "SELECT * FROM usr WHERE LOGIN = ?";
     private static final String GET_ALL_USERS = "SELECT * FROM usr";
+    private static final String GET_USER_ROLE_BY_ID = "SELECT * FROM user_role WHERE user_id = ?";
 
 
     @Override
@@ -52,12 +52,12 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public User updateUserPassword(User user) {
-        jdbcTemplate.update(UPDATE_USER_INFO, user.getPassword(), user.getId());
+        jdbcTemplate.update(UPDATE_USER_PASSWORD, user.getPassword(), user.getId());
         return getUser(user.getId());
     }
 
     @Override
-    public User findByUsername( @PathVariable String login) {
+    public User findByUsername(String login) {
         var list = jdbcTemplate.query(GET_USER_BY_LOGIN, BeanPropertyRowMapper.newInstance(User.class), login);
         if (list.size() == 1) {
             log.info("found user : {}", list);

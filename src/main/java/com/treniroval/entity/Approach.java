@@ -1,6 +1,7 @@
 package com.treniroval.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "approach")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Approach {
 
     @Id
@@ -39,19 +41,14 @@ public class Approach {
         this.workload = workload;
     }
 
-    public Approach() {
-    }
-
     @Override
     public String toString() {
-        return "TrainingExercise{" +
-                "idTrainingExercise=" + id +
-                ", idTraining=" + trainingId +
-                ", idExercise=" + exerciseId +
-                ", approachNumber='" + approachNumber + '\'' +
-                ", repetitions_number='" + repetitions_number + '\'' +
-                ", workload='" + workload + '\'' +
+        return "Approach{" +
+                "trainingId=" + trainingId +
+                ", exerciseId=" + exerciseId +
+                ", approachNumber=" + approachNumber +
+                ", repetitions_number=" + repetitions_number +
+                ", workload=" + workload +
                 '}';
     }
-
 }

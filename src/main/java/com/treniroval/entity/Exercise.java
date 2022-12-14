@@ -1,10 +1,17 @@
 package com.treniroval.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "exercise")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Exercise {
 
     @OneToMany
@@ -23,9 +30,6 @@ public class Exercise {
         this.exerciseName = exerciseName;
     }
 
-    public Exercise() {
-    }
-
     @Override
     public String toString() {
         return "Exercise{" +
@@ -34,19 +38,4 @@ public class Exercise {
                 '}';
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getExerciseName() {
-        return exerciseName;
-    }
-
-    public void setExerciseName(String exerciseName) {
-        this.exerciseName = exerciseName;
-    }
 }
