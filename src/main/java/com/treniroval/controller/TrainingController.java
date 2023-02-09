@@ -8,7 +8,6 @@ import com.treniroval.service.ExerciseService;
 import com.treniroval.service.TrainingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Comparator;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class TrainingController {
@@ -31,8 +30,8 @@ public class TrainingController {
         return trainingService.getTrains(user);
     }
 
-    @PostMapping(value = "/training", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-    public String createTraining(@RequestParam MultiValueMap<String, String> training) {
+    @PostMapping(value = "/training")
+    public String createTraining(@RequestBody MultiValueMap<String, String> training) {
         var mappedTraining = new Training(training.get("trainingTopic").get(0)
                 , training.get("date").get(0)
                 , Long.valueOf(training.get("userId").get(0)));
